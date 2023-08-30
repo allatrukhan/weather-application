@@ -2,7 +2,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllWatherCards } from "../../store/weatherSlice";
+import { getAllWeatherCards } from "../../store/weatherSlice";
 
 
 function WeatherGalleryCards(){
@@ -11,7 +11,7 @@ function WeatherGalleryCards(){
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getAllWatherCards())
+        dispatch(getAllWeatherCards())
     },[])
 
     

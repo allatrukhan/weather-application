@@ -1,8 +1,8 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import React, {useEffect, useState} from "react";
 import {searchGetCityWeather} from "../../store/searchSlice";
 
-function SearchCityWeather() {
+const SearchCityWeather = () =>{
 
     const dispatch = useDispatch();
 

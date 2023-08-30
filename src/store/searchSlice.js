@@ -1,19 +1,20 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {weatherService} from "../services";
+import {weatherService} from "../services/weather.service";
+import searchValue from "../components/SearchCityWeather/SearchCityWeather";
 
 const initialState = {
-    searchObject: [],
+    searchObject: searchValue,
     status: null
 }
 
 export const searchGetCityWeather = createAsyncThunk(
     'searchCityWeather/searchGetCityWeather',
-    async (value) => {
-        if (value.length === 0){
+    async (searchValue) => {
+        if (searchValue.length === 0){
             return null
         }
         try {
-            return await weatherService.searchCityWeather(value)
+            return await weatherService.searchCityWeather(searchValue)
         } catch (e) {
             console.log(e)
         }

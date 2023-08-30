@@ -1,10 +1,10 @@
 import {urls, REACT_APP_API_KEY, UNITS} from "../constants/urls";
-import value from "../store/searchSlice";
+
 import { axiosService } from "./axios.service";
 
 export const weatherService = {
 
-getWeatherBySearch:(value)=>axiosService.get(urls.weather + `/`, {
+getWeatherBySearch:(value)=>axiosService.get(urls.weather, {
     params: {
         "q": value,
         "units": UNITS,

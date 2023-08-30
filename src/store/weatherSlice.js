@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import { weatherService } from "../services";
-import value from "../store/searchSlice";
+import { weatherService } from "../services/weather.service";
+import searchValue from "../store/searchSlice";
 
-export const getAllWatherCards = createAsyncThunk(
-    'weatherSlice/getAllWatherCards',
+export const getAllWeatherCards = createAsyncThunk(
+    'weatherSlice/getAllWeatherCards',
     async(_ , {rejectWithValue})=>{
         try{
-            const weatherCards = await weatherService.getWeatherBySearch(value);
+            const weatherCards = await weatherService.getWeatherBySearch(searchValue);
             return weatherCards;
         }
         catch (e){
@@ -35,15 +35,17 @@ const weatherSlice = createSlice({
         }
        },
        extraReducers:{
-        [getAllWatherCards.pending]:(state, action) =>{
-            state.status ='pending',
-            state.error = null;
+        [getAllWeatherCards.pending]: (state) => {
+            state.status = 'pending'
         },
-        [getAllWatherCards.fulfilled]:(state, action) =>{
-            state.status ='fulfilled',
-            state.weatherCards = action.payload;
+        [getAllWeatherCards.fulfilled]:(state, action) =>{
+            try {
+                state.searchObject = action.payload.data.results
+            } catch (e) {
+                state.searchObject = []
+            }
         },
-        [getAllWatherCards.rejected]:(state, action) =>{
+        [getAllWeatherCards.rejected]:(state, action) =>{
             state.status ='rejected';
             state.error = action.payload;
         }
@@ -53,5 +55,5 @@ const weatherSlice = createSlice({
 )
 
 const weatherReducer = weatherSlice.reducer;
-export const {addCard, deleteCard} = weatherSlice.actions;
+export const {deleteCard} = weatherSlice.actions;
 export default weatherReducer;
