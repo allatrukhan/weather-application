@@ -7,19 +7,22 @@ import { getAllWeatherCards } from "../../store/weatherSlice";
 
 function WeatherGalleryCards(){
     
-    const {weatherCards, status, error} = useSelector(state => state['weatherReducer']);
+    const {searchObject} = useSelector(state => state['searchCityWeatherReduser']);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getAllWeatherCards())
-    },[])
+        dispatch(getAllWeatherCards());
+
+    },[searchObject])
 
     
 return(
     <div>
-        {status === 'pending' && <h1>Loading</h1>}
-        {error && <h2>{error}</h2>}
-        {weatherCards.map(weatherCard => <WeatherCard key={weatherCard.id} weatherCard={weatherCard}/> ) }
+        {/* {status === 'pending' && <h1>Loading</h1>} */}
+        {/* {error && <h2>{error}</h2>} */}
+        {/* {weatherCards.map(weatherCard => <WeatherCard key={weatherCard.id} weatherCard={weatherCard}/> ) } */}
+        {/* {weatherCards.map(weatherCard => <WeatherCard weatherData={weatherCard}/> ) } */}
+        {(searchObject.main!==undefined)?<WeatherCard weatherData={searchObject}/>:(<h1>Try one's more</h1>)}
     </div> 
 )
   }

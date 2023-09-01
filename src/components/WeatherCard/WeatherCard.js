@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import { deleteCard } from '../../store/weatherSlice';
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
-function WeatherCard ({weatherCard: {id, weatherData}}){
+function WeatherCard ({ weatherData}){
     
     const dispatch = useDispatch();
 
     const {info} = useSelector(state => state['weatherReducer']);
 
-    const icon = weatherData.weather[0].icon;
+    // const icon = weatherData.weather[0].icon;
     
     const refresh = () => {
         window.location.reload();
@@ -21,14 +21,14 @@ function WeatherCard ({weatherCard: {id, weatherData}}){
             <h1>{info}</h1>
             <div className="top">
                 <p className="header">{weatherData.name}</p>
-                <button type="button" class="close-current-location-btn" onClick={()=>dispatch(deleteCard({id}))}>Close</button> 
+                <button type="button" class="close-current-location-btn" onClick={()=>dispatch(deleteCard(weatherData.id))}>Close</button> 
                 <Button className="refresh-button" inverted color='black' circular icon='refresh' onClick={refresh} />
             </div>
 
             <div className="flex">
                 <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
-                <p className="description">{weatherData.weather[0].main}</p>
-                <img src={`http://openweathermap.org/img/w/${icon}.png`} alt='weather-icon'/>
+                {/* <p className="description">{weatherData.weather[0].main}</p> */}
+                {/* <img src={`http://openweathermap.org/img/w/${icon}.png`} alt='weather-icon'/> */}
             </div>
 
             <div className="flex">

@@ -9,7 +9,7 @@ const SearchCityWeather = () =>{
     const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
-      dispatch(searchGetCityWeather(searchValue))
+      dispatch(searchGetCityWeather(searchValue))   
   }, [searchValue])
 
     return (

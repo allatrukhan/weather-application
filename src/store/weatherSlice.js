@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import { weatherService } from "../services/weather.service";
-import searchValue from "../store/searchSlice";
+// import searchValue from "../store/searchSlice";
 
 export const getAllWeatherCards = createAsyncThunk(
     'weatherSlice/getAllWeatherCards',
-    async(_ , {rejectWithValue})=>{
+    async(searchValue , {rejectWithValue})=>{
         try{
             const weatherCards = await weatherService.getWeatherBySearch(searchValue);
-            return weatherCards;
+            return weatherCards.data;
         }
         catch (e){
             return rejectWithValue(e.message);
@@ -40,9 +40,9 @@ const weatherSlice = createSlice({
         },
         [getAllWeatherCards.fulfilled]:(state, action) =>{
             try {
-                state.searchObject = action.payload.data.results
+                state.weatherCards = action.payload.data.results
             } catch (e) {
-                state.searchObject = []
+                state.weatherCards = []
             }
         },
         [getAllWeatherCards.rejected]:(state, action) =>{
