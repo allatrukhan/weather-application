@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.main{
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    width: 40%;
+    height: 300px;
+    background-color: #965839;
+    border-radius: 20px;
+    border: 3px solid black;
+}
+
+.flex p{
+    color: black;
+    padding-left: 10px;
+    font-size: 24px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.flex{
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex img{
+    width: 70px;
+    height: 70px;
+    bottom: 0;
+}
+.flex-top{    
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    border-radius: 20px 20px 0 0;
+    background-color: #6d351a;
+    color: black;
+    outline: 3px solid black;
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    padding-left: 10px;
+}
+
+.refresh-button{
+    width: 35px;
+    height: 35px;   
+}
+
+.close-current-location-btn{
+    height: 35px;
+}
+
+.day{
+    padding: 15px;
+    color: black;
+    font-family: 'Preahvihear', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.temp{
+    padding: 15px;
+    color: black;
+    font-family: 'Preahvihear', sans-serif;
+    font-size: 18px;
+}
+
+.sunrise-sunset{
+    padding: 15px;
+    color: black;
+    font-family: 'Preahvihear', sans-serif;
+    font-size: 16px;
+}
+
+.description{
+    padding: 15px;
+    color: black;
+    font-family: 'Preahvihear', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}

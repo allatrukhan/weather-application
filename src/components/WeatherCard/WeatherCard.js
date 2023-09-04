@@ -1,38 +1,44 @@
 import moment from 'moment';
 import { Button } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { deleteCard } from '../../store/weatherSlice';
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { deleteCard, refreshCard } from '../../store/searchSlice';
+// import { useSelector } from "react-redux/es/hooks/useSelector";
 
-function WeatherCard ({ weatherData}){
+
+import './WeatherCard.css';
+
+
+function WeatherCard ({weatherData}){
     
     const dispatch = useDispatch();
 
-    const {info} = useSelector(state => state['weatherReducer']);
+    // const {info} = useSelector(state => state['weatherReducer']);
 
-    // const icon = weatherData.weather[0].icon;
+    const icon = weatherData.weather[0].icon;
     
-    const refresh = () => {
-        window.location.reload();
+    const refresh = (name) => {
+        dispatch(refreshCard(name));
+        // console.log(searchGetCityWeather(name))
     }
 
     return (
         <div className="main">
-            <h1>{info}</h1>
-            <div className="top">
-                <p className="header">{weatherData.name}</p>
-                <button type="button" class="close-current-location-btn" onClick={()=>dispatch(deleteCard(weatherData.id))}>Close</button> 
-                <Button className="refresh-button" inverted color='black' circular icon='refresh' onClick={refresh} />
+            {/* <h1>{info}</h1> */}
+            <div className="flex-top">
+                <p>{weatherData.name}</p>
+                <button type="button" class="close-current-location-btn" onClick={()=> dispatch(deleteCard(weatherData))
+                    }>Close</button> 
+                <Button className="refresh-button" inverted color='black' circular icon='refresh' onClick={()=>refresh(weatherData.name)} />
             </div>
 
             <div className="flex">
                 <p className="day">{moment().format('dddd')}, <span>{moment().format('LL')}</span></p>
-                {/* <p className="description">{weatherData.weather[0].main}</p> */}
-                {/* <img src={`http://openweathermap.org/img/w/${icon}.png`} alt='weather-icon'/> */}
+                <p className="description">{weatherData.weather[0].main}</p>
+                <img src={`http://openweathermap.org/img/w/${icon}.png`} alt='weather-icon'/>
             </div>
 
             <div className="flex">
-                <p className="temp">Temprature: {weatherData.main.temp} &deg;C</p>
+                <p className="temp">Temperature: {weatherData.main.temp} &deg;C</p>
                 <p className="temp">Humidity: {weatherData.main.humidity} %</p>
             </div>
 
