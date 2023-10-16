@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import React, {useEffect, useState} from "react";
+// import React, {useEffect, useState} from "react";
 import {searchGetCityWeather} from "../../store/searchSlice";
 
 
@@ -18,7 +18,8 @@ const SearchCityWeather = () =>{
     function onSubmit(event){
         event.preventDefault();
         // setSearchValue();
-        dispatch(searchGetCityWeather(event.target.name.value))   
+        dispatch(searchGetCityWeather(event.target.name.value)) 
+        // dispatch(weatherForecast(event.target.name.value))   
         event.target.reset();
     }
 

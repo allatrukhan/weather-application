@@ -3,6 +3,7 @@ import {weatherService} from "../services/weather.service";
 
 const initialState = {
     searchObject: [],
+    dailyForecast: [[], ""],
     status: null
 }
 
@@ -17,7 +18,6 @@ export const refreshCard = createAsyncThunk(
     }
 )
 
-
 export const searchGetCityWeather = createAsyncThunk(
     'searchCityWeather/searchGetCityWeather',
     async (searchValue) => {
@@ -26,6 +26,20 @@ export const searchGetCityWeather = createAsyncThunk(
         }
         try {
             return await weatherService.getWeatherBySearch(searchValue)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+)
+
+export const weatherForecast = createAsyncThunk(
+    'forecast/weatherForecast',
+    async (searchValue) => {
+        if (searchValue.length === 0){
+            return null
+        }
+        try {
+            return await weatherService.getWeatherForecast(searchValue)
         } catch (e) {
             console.log(e)
         }
@@ -56,26 +70,27 @@ const searchCityWeatherSlice = createSlice({
             },
     },
     extraReducers: {
+        [weatherForecast.fulfilled]: (state, action) => {
+            state.status = 'fulfilled'
+            console.log(action.payload)
+            state.dailyForecast[0]=(action.payload.data.list.filter(weatherForecastData => weatherForecastData.dt_txt.includes("18:00:00")));
+            state.dailyForecast[1]=(action.payload.data.city.name);
+            
+    },    
+            
         [searchGetCityWeather.pending]: (state) => {
             state.status = 'pending'
         },
         [searchGetCityWeather.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
+            console.log(action.payload)
             try {
-                console.log(action.payload.data.name);
                 const indx = state.searchObject.findIndex(el=> el.name===action.payload.data.name);
                 if (indx===-1){
                     state.searchObject.push(action.payload.data);
                 }
-                // state.searchObject.forEach((el) => {
-                //     if (el.name === action.payload.data.name){return}
-                // })
-                // state.searchObject.push(action.payload.data)
-                // state.searchObject = action.payload.data;
-                // state.searchObject.push(action.payload.data);
-                    // state.searchObject = {...action.payload.data, id:new Date().getTime()}
             } catch (e) {
-                state.searchObject = []
+
             }
         },
         [refreshCard.pending]: (state) => {
@@ -96,13 +111,12 @@ const searchCityWeatherSlice = createSlice({
         },
         [locationGetCityWeather.fulfilled]: (state, action) => {
             state.status = 'fulfilled'
-            try {
-                state.searchObject.push(action.payload.data);
-                // state.searchObject = action.payload.data
-                    // state.searchObject = {...action.payload.data, id:new Date().getTime()}
-            } catch (e) {
-                state.searchObject = []
-            }
+            try{ const indx = state.searchObject.findIndex(el=> el.name===action.payload.data.name);
+                if (indx===-1){
+                    state.searchObject.push(action.payload.data);
+                }}catch (e) {
+                    // state.searchObject = []
+                }
         }
 
     }

@@ -26,6 +26,25 @@ getWeatherByLocation: (latitude, longitude)=>axios.get(`/weather/?lat=${latitude
 //         "APPID": REACT_APP_API_KEY
 //     }
 // }).then(value => value.data)
-)
+),
+
+    getWeatherForecast: (value)=> 
+        // const dailyData = data.list.filter(reading => reading.dt_txt.includes("18:00:00"))
+       axios.get(`/forecast/?q=${value}&&units=metric&APPID=${REACT_APP_API_KEY}` 
+    //    axios.get(`/forecast?lat=${latitude}&lon=${longitude}&&units=metric&exclude=daily&APPID=${REACT_APP_API_KEY}`
+   ) 
+
 }
 
+// getWeatherForecast: (forecast=[])=> {
+//     try {
+//         switch (forecast) {
+//         case 'search': 
+//             axios.get(`/forecast/?q=${value}&&units=metric&APPID=${REACT_APP_API_KEY}`)
+//         case 'current':
+//             axios.get(`/forecast/?lat=${latitude}&lon=${longitude}&&units=metric&APPID=${REACT_APP_API_KEY}`)
+// } 
+// }catch (err) {
+//     throw err;
+// } 
+// }

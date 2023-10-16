@@ -1,5 +1,9 @@
 .App{
+    /* background-size: cover; */
+    /* height: 100vh; */
+    /* background-image: url(./pexels-johannes-plenio-1118873.jpg); */
+    background-color: goldenrod;
     background-size: cover;
+    width: 100vw;
     height: 100vh;
-    background-image: url(./pexels-johannes-plenio-1118873.jpg);
 }

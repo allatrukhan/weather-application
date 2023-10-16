@@ -1,9 +1,6 @@
 import moment from 'moment';
-import { Button } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { deleteCard, refreshCard } from '../../store/searchSlice';
-// import { useSelector } from "react-redux/es/hooks/useSelector";
-
+import { deleteCard, refreshCard, weatherForecast } from '../../store/searchSlice';
 
 import './WeatherCard.css';
 
@@ -12,23 +9,23 @@ function WeatherCard ({weatherData}){
     
     const dispatch = useDispatch();
 
-    // const {info} = useSelector(state => state['weatherReducer']);
-
     const icon = weatherData.weather[0].icon;
     
     const refresh = (name) => {
         dispatch(refreshCard(name));
-        // console.log(searchGetCityWeather(name))
     }
 
     return (
         <div className="main">
-            {/* <h1>{info}</h1> */}
             <div className="flex-top">
                 <p>{weatherData.name}</p>
-                <button type="button" class="close-current-location-btn" onClick={()=> dispatch(deleteCard(weatherData))
-                    }>Close</button> 
-                <Button className="refresh-button" inverted color='black' circular icon='refresh' onClick={()=>refresh(weatherData.name)} />
+                    <div className="button-box">
+                        <button type="button" class="weather-forecast-btn" onClick={()=> dispatch(weatherForecast(weatherData.name))
+                        }>5 days forecast</button>
+                        <button type="buttton" className="refresh-button" onClick={()=>refresh(weatherData.name)}>Refrech card</button>
+                        <button type="button" class="close-current-location-btn" onClick={()=> dispatch(deleteCard(weatherData))
+                        }>Close</button> 
+                    </div>
             </div>
 
             <div className="flex">

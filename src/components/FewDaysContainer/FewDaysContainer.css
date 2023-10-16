@@ -1,9 +1,8 @@
-.gallery{
+.few-days-container{
     display: flex;
-    flex-flow: row wrap;
-    flex: 1, 1, 1;
-    gap: 20px;
+    gap: 10px;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
+    margin-bottom: 50px;
 }

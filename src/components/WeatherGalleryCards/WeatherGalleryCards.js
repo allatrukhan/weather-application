@@ -1,22 +1,11 @@
 import WeatherCard from "../WeatherCard/WeatherCard";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-// import { useEffect } from "react";
-// import { useDispatch } from "react-redux";
-// import { getAllWeatherCards } from "../../store/weatherSlice";
 
 import './WeatherGalleryCards.css';
 
 function WeatherGalleryCards(){
     
     const {searchObject} = useSelector(state => state['searchCityWeatherReduser']);
-
-    // const dispatch = useDispatch();
-
-    // useEffect(()=>{
-    //     dispatch(getAllWeatherCards());
-
-    // },[searchObject])
-
     
 return(
     <div class="gallery">
