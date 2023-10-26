@@ -1,4 +1,4 @@
-import {urls, REACT_APP_API_KEY, UNITS} from "../constants/urls";
+import { REACT_APP_API_KEY} from "../constants/urls";
 
 // import { axiosService } from "./axios.service";
 import axios from "axios";

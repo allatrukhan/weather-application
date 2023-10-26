@@ -1,0 +1,6 @@
+{
+    "serverPort": 5000,
+    "dbUrl": "mongodb+srv://allatrukhan1993:Iloveyou3207600@cluster0.tpolldw.mongodb.net/?retryWrites=true&w=majority",
+    "secretKey": "my-first-token"
+    
+}

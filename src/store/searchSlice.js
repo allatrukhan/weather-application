@@ -67,7 +67,15 @@ const searchCityWeatherSlice = createSlice({
     reducers: {
         deleteCard: (state, action)=>{ 
             state.searchObject = state.searchObject.filter(weatherData => weatherData.id !== action.payload.id)
-            },
+            console.log(action.payload)
+            if (
+                state.dailyForecast[1] === action.payload.name
+            ) {
+                state.dailyForecast = [[], ""];    
+            }          
+            // state.dailyForecast = state.dailyForecast.filter(weatherData => weatherData.id !== action.payload.id)
+            // state.dailyForecast = [[], ""];
+        },
     },
     extraReducers: {
         [weatherForecast.fulfilled]: (state, action) => {

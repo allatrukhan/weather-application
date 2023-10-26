@@ -1,16 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
 .main{
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-    /* display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px; */
     max-width: 30%;
     height: 300px;
-    background-color: #965839;
+    background-color:#d6ed99;
     border-radius: 20px;
     border: 3px solid black;
     margin-left: 30px;
@@ -39,38 +32,42 @@
     justify-content: space-between;
     height: 70px;
     border-radius: 20px 20px 0 0;
-    background-color: #6d351a;
+    background-color: #a8d38ab3;
     color: black;
     outline: 3px solid black;
-    font-family: 'Dancing Script', cursive;
-    font-size: 32px;
     padding-left: 10px;
 }
 
 .button-box{
-    width: 40%;
+    width: 60%;
     display: flex;
+    position: relative;
     gap: 20px;
     margin-top: 20px;
-    padding-left: 10px;
+    font-size: 14px;
+    margin-bottom: 20px ;
 }
+/* 
 .refresh-button{
     height: 35px; 
     border-radius: 10%; 
-    background-color: #965839; 
+    background-color: rgba(255, 250, 250, 0.644);
+    font-size: 14px;
 }
 
 .close-current-location-btn{
     height: 35px;
     border-radius: 10%; 
-    background-color: #965839; 
+    background-color:  rgba(255, 250, 250, 0.644);
+    font-size: 14px;
 }
 
 .weather-forecast-btn{
     height: 35px;
     border-radius: 10%; 
-    background-color: #965839; 
-}
+    background-color:  rgba(255, 250, 250, 0.644);
+    font-size: 14px;
+} */
 
 .day{
     padding: 15px;

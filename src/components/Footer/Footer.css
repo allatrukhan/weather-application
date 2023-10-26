@@ -1,4 +1,4 @@
-.footer{
+/* .footer{
     position: fixed;
     display: flex;
     gap: 50px;
@@ -9,10 +9,17 @@
     min-height: 70px;
     background-color:  #965839;
     outline: 3px solid black ;
-    /* padding-top: 20px; */
   }
   .footer h2{
     text-align: center;
-    font: italic small-caps bold 24px cursive;
-    
+    font: italic small-caps bold 24px cursive;  
+  } */
+
+  footer{
+    position: fixed;
+    /* display: flex; */
+    bottom: 0;
+    width: 100%;
+   
   }
+

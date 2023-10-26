@@ -1,23 +1,39 @@
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+
+import Home from './pages/Home';
+import Login from './pages/Login';
 import './App.css';
-import SearchCityWeather from './components/SearchCityWeather/SearchCityWeather';
-import WeatherGalleryCards from './components/WeatherGalleryCards/WeatherGalleryCards';
-import CurrentLocationWeather from  './components/CurrentLocationWeather/CurrentLocationWeather';
-import FewDaysContainer from './components/FewDaysContainer/FewDaysContainer';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Registration from "./pages/Registration";
+// import { useState, useEffect } from "react";
+
 
 function App() {
-  
+
+//   const [data, setData]= useState('');
+
+//   useEffect (()=>{
+//   fetch('/api/registration')
+//   .then(response => response.json())
+//   .then(response => setData(response.message))
+// },[]) 
+
   return (
     <div className="App">
-        <Header/>
-        <CurrentLocationWeather/>
-        <SearchCityWeather/>
-        <WeatherGalleryCards/>
-        <FewDaysContainer/>
-        <Footer/>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/registration" element={<Registration/>}/>
+        </Routes>
+      </Router>
+
+{/* <p>
+  {!data ? "Loading..." : data}
+</p> */}
+        
     </div>
   );
 }
 
 export default App;
+

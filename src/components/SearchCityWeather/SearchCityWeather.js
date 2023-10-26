@@ -24,13 +24,14 @@ const SearchCityWeather = () =>{
     }
 
     return (
-        <div class="search">
-      <form onSubmit={onSubmit} class="search-container">
-          <input type="text" name="name"/> 
-          <input type="submit" value="Search" />  
-      </form>
-    </div>
+      <div class="search">  
+        <form onSubmit={onSubmit} class="search-container">
+          <input type="text" name="name" class="form-control me-2" placeholder="Search"/> 
+          <input type="submit" className="btn btn-outline-secondary" value="Search" />  
+        </form>
+      </div>
+
+      
     );
   }
-
   export default SearchCityWeather;

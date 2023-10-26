@@ -20,10 +20,10 @@ function WeatherCard ({weatherData}){
             <div className="flex-top">
                 <p>{weatherData.name}</p>
                     <div className="button-box">
-                        <button type="button" class="weather-forecast-btn" onClick={()=> dispatch(weatherForecast(weatherData.name))
+                        <button type="button" class="btn btn-outline-secondary" onClick={()=> dispatch(weatherForecast(weatherData.name))
                         }>5 days forecast</button>
-                        <button type="buttton" className="refresh-button" onClick={()=>refresh(weatherData.name)}>Refrech card</button>
-                        <button type="button" class="close-current-location-btn" onClick={()=> dispatch(deleteCard(weatherData))
+                        <button type="buttton" className="btn btn-outline-secondary" onClick={()=>refresh(weatherData.name)}>Refrech card</button>
+                        <button type="button" class="btn btn-outline-secondary" onClick={()=> dispatch(deleteCard(weatherData))
                         }>Close</button> 
                     </div>
             </div>

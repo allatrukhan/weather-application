@@ -45,8 +45,11 @@ const CurrentLocationWeather = () =>{
 
       return(
         <div class="current-location">
-           <button onClick={getLocation} type="button" class="open-current-location-btn">Current location weather</button> 
+           <button onClick={getLocation} type="button" class="btn btn-outline-secondary">Current location weather</button> 
         </div>       
       )
 }
 export default CurrentLocationWeather;  
+
+
+// <button class="btn btn-outline-secondary" type="button">Secondary action</button>
